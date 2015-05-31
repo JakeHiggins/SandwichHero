@@ -72,19 +72,23 @@ public class IngredientManager : MonoBehaviour {
 		}
 		if(Game.Music.GetComponent<AudioSource>().isPlaying) {
 			if(hit.transform.gameObject.Equals (americanCheeseStack)) {
-				Game.Music.AddBeat(Game.Music.cheese, Time.time);
+				//Game.Music.AddBeat(Game.Music.cheese, Time.time);
+				gameObject.GetComponent<AudioSource>().PlayOneShot(Game.Music.cheese);
 				AddIngredient (americanCheeseSlice, 1, true);
 			}
 			if(hit.transform.gameObject.Equals (hamStack)) {
-				Game.Music.AddBeat(Game.Music.meat, Time.time);
+				//Game.Music.AddBeat(Game.Music.meat, Time.time);
+				gameObject.GetComponent<AudioSource>().PlayOneShot(Game.Music.meat);
 				AddIngredient (hamSlice, 2, true);
 			}
 			if(hit.transform.gameObject.Equals (lettuceStack)) {
-				Game.Music.AddBeat(Game.Music.veggie, Time.time);
+				//Game.Music.AddBeat(Game.Music.veggie, Time.time);
+				gameObject.GetComponent<AudioSource>().PlayOneShot(Game.Music.veggie);
 				AddIngredient (lettuceSlice, 2, true);
 			}
 			if(hit.transform.gameObject.Equals (italianBottle)) {
-				Game.Music.AddBeat(Game.Music.dressing, Time.time);
+				//Game.Music.AddBeat(Game.Music.dressing, Time.time);
+				gameObject.GetComponent<AudioSource>().PlayOneShot(Game.Music.dressing);
 				AddIngredient (italianSlice, 3, true);
 			}
 		}
@@ -127,11 +131,12 @@ public class IngredientManager : MonoBehaviour {
 
 	public void AddIngredient(GameObject ingredient, float offsetDistance, bool rotate) {
 		_ingredientCount++;
-		Vector3 position = startPosition + new Vector3(0, _ingredientCount * offsetDistance, -_ingredientCount*offsetDistance);
+		Vector3 position = startPosition + new Vector3(0, _ingredientCount, -_ingredientCount);
 		GameObject clone = Instantiate (ingredient, position, Quaternion.identity) as GameObject;
 		if(rotate)
 			clone.transform.Rotate (Vector3.up, Random.Range (0, 360));
 		clone.transform.parent = _currentSandwichContainer.transform;
+		clone.GetComponent<MeshCollider> ().enabled = false;
 		_currentSandwichSlices.Add (clone);
 	}
 }
