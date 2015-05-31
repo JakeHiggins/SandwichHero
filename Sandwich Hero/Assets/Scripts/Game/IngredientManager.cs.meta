@@ -1,8 +1,24 @@
 fileFormatVersion: 2
 guid: b2539d13ae034e847bd040446a5daa5c
+timeCreated: 1433043446
+licenseType: Free
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - whiteBreadStack: {fileID: 100000, guid: 22c8fa7719b7f2845965a55f8bdf07ee, type: 2}
+  - americanCheeseStack: {fileID: 100000, guid: d904e6a9ac4781b449a80d67239e0d79,
+      type: 2}
+  - hamStack: {instanceID: 0}
+  - lettuceStack: {instanceID: 0}
+  - italianBottle: {instanceID: 0}
+  - sandwichContainer: {fileID: 100000, guid: ca3c6eddc5d73944089350d7e2066aee, type: 2}
+  - whiteBreadSlice: {instanceID: 0}
+  - americanCheeseSlice: {instanceID: 0}
+  - hamSlice: {fileID: 100000, guid: eaa336950b6f09c4197206941c0bd2fd, type: 2}
+  - lettuceSlice: {fileID: 100000, guid: 3e0d17790580d7c4b902eb1a2a08f29b, type: 2}
+  - italianSlice: {fileID: 100000, guid: da4898efda080e6479f2e2b41df905b7, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
+  assetBundleName: 
+  assetBundleVariant: 

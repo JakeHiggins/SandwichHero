@@ -1,8 +1,17 @@
 fileFormatVersion: 2
 guid: 21bda6fbaa30c7f4fa5c358330c2f798
+timeCreated: 1433043561
+licenseType: Free
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - pop: {fileID: 8300000, guid: a38bd8cf463be6e4397fff687a372b28, type: 3}
+  - cheese: {instanceID: 0}
+  - meat: {instanceID: 0}
+  - dressing: {instanceID: 0}
+  - veggie: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
+  assetBundleName: 
+  assetBundleVariant: 
