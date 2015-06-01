@@ -13,8 +13,8 @@ public class SlideOffScreen : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if(_isActive) {
-			transform.position = transform.position + new Vector3(1, 0, 0);
-			if(transform.position.x >= 150) {
+			transform.position = transform.position + new Vector3(-2, 0, 0);
+			if(transform.position.x <= -150) {
 				GameObject.Destroy (this.gameObject);
 			}
 		}

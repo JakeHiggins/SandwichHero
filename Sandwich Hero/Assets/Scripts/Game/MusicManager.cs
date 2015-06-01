@@ -38,7 +38,8 @@ public class MusicManager : MonoBehaviour {
 		}
 	}
 
-	public void ToggleBaseBeat() {
+	public void ToggleBaseBeat(AudioClip audio) {
+		gameObject.GetComponent<AudioSource> ().clip = audio;
 		if(gameObject.GetComponent<AudioSource>().isPlaying) {
 			gameObject.GetComponent<AudioSource>().Stop ();
 			_pastBeats.Add (_beats);

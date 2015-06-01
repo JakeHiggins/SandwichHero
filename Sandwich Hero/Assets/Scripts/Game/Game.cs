@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Game : MonoBehaviour {
 
@@ -7,8 +9,19 @@ public class Game : MonoBehaviour {
 
 	public MusicManager musicMan;
 	public GameObject background;
+	public GameObject sandwichContainer;
+
+	public Vector3 sandwichPosition;
 
 	public bool paused;
+
+	public Text costText;
+
+	private int _ingredientCount = 0;
+	private GameObject _currentSandwichContainer;
+	private List<GameObject> _currentSandwichSlices;
+
+	private double _sandwichCost = 0.00;
 
 	public static Game instance {
 		get {
@@ -23,6 +36,7 @@ public class Game : MonoBehaviour {
 	void Awake() {
 		if(_instance == null) {
 			_instance = this;
+			_instance._currentSandwichSlices = new List<GameObject>();
 		}
 		else {
 			if(this != _instance)
@@ -30,8 +44,45 @@ public class Game : MonoBehaviour {
 		}
 	}
 
+	public static Text CostText {
+		get { return _instance.costText; }
+		set { _instance.costText = value; }
+	}
+
+	public static int IngredientCount {
+		get { return _instance._ingredientCount; }
+		set { _instance._ingredientCount = value; }
+	}
+
+	public static double SandwichCost {
+		get { return _instance._sandwichCost; }
+		set { _instance._sandwichCost = value; }
+	}
+
+	public static GameObject CurrentSandwichContainer {
+		get { return _instance._currentSandwichContainer; }
+		set { _instance._currentSandwichContainer = value; }
+	}
+
+	public static List<GameObject> CurrentSandwichSlices {
+		get { return _instance._currentSandwichSlices; }
+		set { _instance._currentSandwichSlices = value; }
+	}
+
+	public static void AddSandwichSlice(GameObject slice) {
+		_instance._currentSandwichSlices.Add (slice);
+	}
+
+	public static GameObject SandwichContainer {
+		get { return _instance.sandwichContainer; }
+	}
+
+	public static Vector3 SandwichPosition {
+		get { return _instance.sandwichPosition; }
+	}
+
 	public static MusicManager Music {
-		get{return _instance.musicMan;}
+		get { return _instance.musicMan; }
 	}
 
 	public static bool Paused {
@@ -54,7 +105,7 @@ public class Game : MonoBehaviour {
 		_instance.background.GetComponent<Renderer>().enabled = false;
 	}
 
-	public static void ToggleBaseBeat() {
+	public static void ToggleBaseBeat(AudioClip clip) {
 		if(_instance.gameObject.GetComponent<AudioSource>().isPlaying)
 			_instance.gameObject.GetComponent<AudioSource>().Stop ();
 		else
