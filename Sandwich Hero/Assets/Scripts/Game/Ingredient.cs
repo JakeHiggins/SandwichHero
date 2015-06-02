@@ -38,10 +38,12 @@ public class Ingredient : MonoBehaviour {
 
 	public void AddIngredient() {
 		if (isBread) {
-			CreateSandiwchContainer();
+			CreateSandiwchContainer ();
+		} else {
+			gameObject.GetComponent<AudioSource> ().PlayOneShot (audio);
 		}
+
 		AddCost ();
-		gameObject.GetComponent<AudioSource> ().PlayOneShot (audio);
 		Game.IngredientCount++;
 		Vector3 position = Game.SandwichPosition + new Vector3 (0, Game.IngredientCount, -Game.IngredientCount);
 		GameObject clone = Instantiate (ingredient, position, ingredient.transform.rotation) as GameObject;
