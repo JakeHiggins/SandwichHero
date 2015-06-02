@@ -46,9 +46,9 @@ public class Ingredient : MonoBehaviour {
 		Vector3 position = Game.SandwichPosition + new Vector3 (0, Game.IngredientCount, -Game.IngredientCount);
 		GameObject clone = Instantiate (ingredient, position, ingredient.transform.rotation) as GameObject;
 		if(!isBread)
-			clone.transform.Rotate (Vector3.up, Random.Range (0, 360));
+			clone.transform.Rotate (Vector3.forward, Random.Range (0, 360));
 		clone.transform.parent = Game.CurrentSandwichContainer.transform;
-		clone.GetComponent<MeshCollider> ().enabled = false;
+		//clone.GetComponent<MeshCollider> ().enabled = false;
 		Game.AddSandwichSlice (clone);
 	}
 
