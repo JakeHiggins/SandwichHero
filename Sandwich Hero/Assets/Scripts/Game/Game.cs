@@ -14,14 +14,19 @@ public class Game : MonoBehaviour {
 	public Vector3 sandwichPosition;
 
 	public bool paused;
+	private bool _canAdd = false;
 
 	public Text costText;
+	public Text walletText;
 
 	private int _ingredientCount = 0;
 	private GameObject _currentSandwichContainer;
 	private List<GameObject> _currentSandwichSlices;
 
-	private double _sandwichCost = 0.00;
+	private Ingredient _currentBreadType;
+
+	private float _sandwichCost = 0.00f;
+	public float wallet = 100.00f;
 
 	public static Game instance {
 		get {
@@ -44,6 +49,16 @@ public class Game : MonoBehaviour {
 		}
 	}
 
+	public static Ingredient CurrentBread {
+		get { return _instance._currentBreadType; }
+		set { _instance._currentBreadType = value; }
+	}
+
+	public static Text WalletText {
+		get { return _instance.walletText; }
+		set { _instance.walletText = value; }
+	}
+
 	public static Text CostText {
 		get { return _instance.costText; }
 		set { _instance.costText = value; }
@@ -54,9 +69,14 @@ public class Game : MonoBehaviour {
 		set { _instance._ingredientCount = value; }
 	}
 
-	public static double SandwichCost {
+	public static float SandwichCost {
 		get { return _instance._sandwichCost; }
 		set { _instance._sandwichCost = value; }
+	}
+
+	public static float Wallet {
+		get { return _instance.wallet; }
+		set { _instance.wallet = value; }
 	}
 
 	public static GameObject CurrentSandwichContainer {
@@ -88,6 +108,11 @@ public class Game : MonoBehaviour {
 	public static bool Paused {
 		get { return _instance.paused; }
 		set { _instance.paused = value; }
+	}
+
+	public static bool CanAdd {
+		get { return _instance._canAdd; }
+		set { _instance._canAdd = value; }
 	}
 
 	public static void Pause() {
