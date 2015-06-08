@@ -4,12 +4,18 @@ using System.Collections;
 public class KitchenButtons : MonoBehaviour {
 
     [Header("System")]
-    public GameObject loadoutManager;
+	public GameObject quitContainer;
+	public GameObject optionsContainer;
 
     [Header("Food Items")]
     public GameObject breadContainer;
     public GameObject cheeseContainer;
     public GameObject meatContainer;
+	public GameObject veggieContainer;
+	public GameObject dressingContainer;
+
+	[Header("Loadout")]
+	public GameObject loadoutContainer;
 
 	// Use this for initialization
 	void Start () {
@@ -34,8 +40,8 @@ public class KitchenButtons : MonoBehaviour {
             {
                 if (touch.phase == TouchPhase.Began)
                 {
-                    Vector2 position = new Vector2(touch.position.x, touch.position.y);
-                    RaycastHit2D hit = Physics2D.Raycast(position, Vector2.zero);
+					Vector3 position = Camera.main.ScreenToWorldPoint(touch.position);
+					RaycastHit2D hit = Physics2D.Raycast(position, Vector2.zero);
                     if (hit)
                     {
                         HandleHit(hit);
@@ -63,5 +69,27 @@ public class KitchenButtons : MonoBehaviour {
         {
 			Application.LoadLevel ("Meat_Loadout");
         }
+
+		if (hit.transform.gameObject == veggieContainer) 
+		{
+			//Do Veggie stuff
+			Application.LoadLevel ("Veggie_Loadout");
+		}
+
+		if(hit.transform.gameObject == dressingContainer)
+		{
+			// Do dressing stuff
+			Application.LoadLevel ("Dressing_Loadout");
+		}
+
+		if(hit.transform.gameObject == loadoutContainer)
+		{
+			// Do loadout stuff
+		}
+
+		if(hit.transform.gameObject == quitContainer)
+		{
+			Application.LoadLevel ("Main_Menu");
+		}
     }
 }

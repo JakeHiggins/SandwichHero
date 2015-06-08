@@ -79,10 +79,11 @@ public class MainMenu : MonoBehaviour
         }
         if (hit.transform.gameObject.Equals(recipesButton))
         {
-            recipesAlertScreen.GetComponent<Renderer>().enabled = true;
-            recipesAlertScreen.GetComponent<Collider>().enabled = true;
-            recipesAlertReturnButton.GetComponent<Renderer>().enabled = true;
-            recipesAlertReturnButton.GetComponent<Collider>().enabled = true;
+            //recipesAlertScreen.GetComponent<Renderer>().enabled = true;
+            //recipesAlertScreen.GetComponent<Collider>().enabled = true;
+            //recipesAlertReturnButton.GetComponent<Renderer>().enabled = true;
+            //recipesAlertReturnButton.GetComponent<Collider>().enabled = true;
+			Application.LoadLevel ("Kitchen");
         }
         if (hit.transform.gameObject.Equals(creditsButton))
         {
