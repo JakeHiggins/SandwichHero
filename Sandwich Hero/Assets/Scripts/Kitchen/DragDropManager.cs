@@ -18,6 +18,17 @@ public class DragDropManager : MonoBehaviour {
     public Sprite full;
     public Sprite over;
 
+	public enum IngredientType
+	{
+		Meat,
+		Cheese,
+		Veggie,
+		Bread,
+		Dressing
+	}
+
+	public IngredientType ingredientType;
+
     public static DragDropManager instance
     {
         get
@@ -52,6 +63,7 @@ public class DragDropManager : MonoBehaviour {
 			if (hit.transform.gameObject == DragDropManager.SubmitButton)
 			{
 				Application.LoadLevel("Kitchen");
+				CheckoutIngredients();
 			}
 		}
 		else
@@ -65,10 +77,16 @@ public class DragDropManager : MonoBehaviour {
 					if (hit.transform.gameObject == DragDropManager.SubmitButton)
 					{
 						Application.LoadLevel("Kitchen");
+						CheckoutIngredients();
 					}
 				}
 			}
 		}
+	}
+
+	public IngredientType CurrIngredientType
+	{
+		get { return _instance.ingredientType; }
 	}
 
     public static bool Dragging
@@ -132,9 +150,25 @@ public class DragDropManager : MonoBehaviour {
 		foreach (GameObject dropObj in _instance.dropTargets) 
 		{
 			Drop drop = dropObj.GetComponent<Drop>();
-			ingredients.Add(drop.Ingredient);
+			Drag drag = drop.Ingredient.GetComponent<Drag>();
+			switch(_instance.ingredientType)
+			{
+			case IngredientType.Meat:
+				LoadoutManager.Meats.Add (drag.ingredientStack);
+				break;
+			case IngredientType.Cheese:
+				LoadoutManager.Cheeses.Add (drag.ingredientStack);
+				break;
+			case IngredientType.Veggie:
+				LoadoutManager.Veggies.Add (drag.ingredientStack);
+				break;
+			case IngredientType.Dressing:
+				LoadoutManager.Dressings.Add (drag.ingredientStack);
+				break;
+			case IngredientType.Bread:
+				LoadoutManager.Breads.Add (drag.ingredientStack);
+				break;
+			}
 		}
-		// Need to make this dynamic
-		LoadoutManager.Meats = ingredients;
 	}
 }

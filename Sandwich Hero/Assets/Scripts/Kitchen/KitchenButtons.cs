@@ -50,11 +50,13 @@ public class KitchenButtons : MonoBehaviour {
         if (hit.transform.gameObject == breadContainer)
         {
             // Do bread stuff
+			Application.LoadLevel ("Bread_Loadout");
         }
         
         if(hit.transform.gameObject == cheeseContainer)
         {
             // Do cheese stuff
+			Application.LoadLevel ("Cheese_Loadout");
         }
 
         if(hit.transform.gameObject == meatContainer)
